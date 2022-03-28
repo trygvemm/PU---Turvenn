@@ -1,0 +1,53 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Express API",
+  "main": "server.js",
+  "author": "Andreas Netteland",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon -L  server.js",
+    "db:migrate": "docker exec backend sequelize db:migrate",
+    "db:migrate:undo": "docker exec backend sequelize db:migrate:undo",
+    "db:migrate:undo:all": "docker exec backend sequelize db:migrate:undo:all",
+    "lint": "eslint . --ext js,jsx",
+    "lint:fix": "eslint --fix --ext js,jsx",
+    "format": "prettier --check \"./**/*.{js,jsx,ts,tsx,css,md,json}\"",
+    "format:write": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\"",
+    "test": "jest --verbose"
+  },
+  "dependencies": {
+    "@sequelize/core": "^7.0.0-alpha.10",
+    "@types/jest": "^27.4.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.1",
+    "dotenv": "^16.0.0",
+    "eslint-plugin-jest": "^26.1.1",
+    "express": "^4.17.2",
+    "express-validator": "^6.14.0",
+    "global": "^4.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.4",
+    "moment": "^2.29.1",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.16.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.2",
+    "@babel/eslint-parser": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "babel-jest": "^27.5.1",
+    "eslint": "8.2.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-config-node": "^4.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "2.25.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1",
+    "sequelize-cli": "^6.4.1"
+  }
+}

@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  frontend:
+    container_name: frontend
+    build: ./frontend
+    ports:
+      - 3000:3000
+    volumes:
+      - /app/node_modules
+      - ./frontend:/app
+    stdin_open: true
+  backend:
+    container_name: backend
+    build: ./backend
+    ports:
+      - 4000:4000
+    links:
+      - "database:postgres"
+    volumes:
+      - /app/node_modules
+      - ./backend:/app
+  database:
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256
+      POSTGRES_HOST_AUTH_METHOD: trust
+    container_name: database
+    build:
+      context: .
+      dockerfile: Postgres.Dockerfile
+    ports:
+      - 4001:5432

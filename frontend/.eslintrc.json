@@ -1,0 +1,39 @@
+{
+  "env": {
+    "es6": true,
+    "es2021": true,
+    "jest/globals": true,
+    "browser": true
+  },
+  "extends": ["airbnb", "plugin:react/recommended", "prettier"],
+  "plugins": ["jest", "prettier"],
+  "rules": {
+    "prettier/prettier": ["warn", { "endOfLine": "auto" }],
+    "react/prop-types": "warn",
+    "no-unused-vars": "warn",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "no-console": "off",
+    "func-names": "off",
+    "object-shorthand": "off",
+    "class-methods-use-this": "off",
+    "no-param-reassign": "off",
+    "react/react-in-jsx-scope": "off",
+    "import/no-named-as-default": 0,
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        "required": {
+          "some": ["nesting", "id"]
+        }
+      }
+    ],
+    "jsx-a11y/label-has-for": [
+      "error",
+      {
+        "required": {
+          "some": ["nesting", "id"]
+        }
+      }
+    ]
+  }
+}

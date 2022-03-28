@@ -1,0 +1,20 @@
+{
+  "env": {
+    "node": true,
+    "jest/globals": true
+  },
+  "extends": ["airbnb-base", "plugin:node/recommended", "prettier"],
+  "plugins": ["jest", "prettier"],
+  "rules": {
+    "prettier/prettier": ["warn", { "endOfLine": "auto" }],
+    "no-unused-vars": "warn",
+    "no-console": "off",
+    "func-names": "off",
+    "object-shorthand": "off",
+    "class-methods-use-this": "off",
+    "no-process-exit": "off",
+    "strict": "off",
+    "node/no-unsupported-features/es-syntax": "off",
+    "consistent-return": "off"
+  }
+}

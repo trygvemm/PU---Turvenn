@@ -1,0 +1,36 @@
+image: node:16
+
+services:
+  - postgres:14.1
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - frontend/node_modules/
+    - backend/node_modules/
+
+stages:
+  - build
+  - test_frontend
+  - test_backend
+
+build:
+  stage: build
+  script:
+    - "cd frontend; yarn install"
+    - "cd .."
+    - "cd backend; yarn install"
+
+test_frontend:
+  stage: test_frontend
+  needs: [build]
+  coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
+  script:
+    - "cd frontend; yarn install; yarn test --coverage"
+
+test_backend:
+  stage: test_backend
+  needs: [build]
+  coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
+  script:
+    - "cd backend; yarn install; yarn test --coverage"
